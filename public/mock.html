@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <link rel="stylesheet" href="./styles.css">
+
+  <script>
+    var app = angular.module('myApp', []);
+
+    app.controller('personCtrl', function ($scope, $http) {
+
+      $scope.firstName = "John";
+      $scope.lastName = "Doe";
+      $scope.fullName = $scope.firstName + " " + $scope.lastName;
+
+      function setName(name) {
+        $scope.fullName = name;
+      }
+
+      $http({
+        method: 'GET',
+        url: '/posts/1'
+      }).then(function successCallback(response) {
+        setName(response.data.author);
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+
+    });
+  </script>
+</head>
+
+<body>
+  <div class="agent-home">
+     <div ng-app="myApp" ng-controller="personCtrl">
+        First Name:
+        <input type="text" ng-model="firstName">
+        <br> Last Name:
+        <input type="text" ng-model="lastName">
+        <br>
+        <br> Full Name: {{fullName}}
+     </div>
+     <div class="announcements-flex">
+        <div class="announcements-title">
+           <p class="announcements-title-text">Announcements</p>
+        </div>
+        <div class="announcements">
+           <p class="announcements-text">This is an announcement.</p>
+        </div>
+        <p class="view-all">View Alllll</p>
+     </div>
+     <div class="intro-completion-flex">
+        <div class="introduction-flex">
+           <img class="agent-photo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuSGAXf7eWfM5uBYltH-5FKmpF5Dsru6-PD7UbsI1tSeKu5ATN5w">
+           <ul class="agent-information">
+              <li>
+                 <h2>Skeletor</h2>
+                 <i class="fa fa-pencil-alt edit-agent-name"></i>
+              </li>
+              <li class="city-company">Castle Grayskull | Evil</li>
+              <li class="agent-rank">
+                 <div class="agent-rank-title-section">
+                    <span class="strong accent-text">Badguy</span>
+                    of Cartoonland
+                 </div>
+                 <div class="rank-duration">(Eternity)</div>
+              </li>
+              <li class="view-profile">
+                 <div class="button-primary">
+                    View Public Profile
+                 </div>
+              </li>
+           </ul>
+        </div>
+        <div class="profile-completeness">
+           <ul>
+              <li class="completeness-title">Profile Completeness</li>
+              <li>
+                 <div class="completion-progress">
+                    <div class="completion-progress-bar" style="width: 66%;"></div>
+                 </div>
+                 <span class="completeness-text">66%</span>
+              </li>
+              <li>
+                 <i class="fas fa-exclamation-circle"></i>
+                 <span class="accent-text strong">Provide Contact Info</span>
+                 <div class="button-primary">Fix</div>
+              </li>
+              <li>
+                 <i class="fas fa-exclamation-circle"></i>
+                 <span class="accent-text strong">Complete the REO Certification Courses</span>
+                 <div class="button-primary">Fix</div>
+              </li>
+              <li>
+                 <span class="completeness-message">
+                 <strong>Flagged items need your attention.</strong>
+                 <br> You must be 100% Profile Complete to show up in Search Results by Lenders.</span>
+              </li>
+           </ul>
+        </div>
+     </div>
+     <div class="listing-activity">
+        <h1>My REO Listing Activity</h1>
+        <h3>Messages</h3>
+        <span class="accent-text">View All Messages (1 New)</span>
+        <table>
+           <tr>
+              <th>Subject</th>
+              <th>Date</th>
+              <th>Address</th>
+           </tr>
+           <tr>
+              <td class="accent-text strong">
+                 Please take a look at this task
+                 <i class="fas fa-exclamation-circle"></i>
+              </td>
+              <td>03/08/2018</td>
+              <td>123 Main Street Anaheim, CA</td>
+           </tr>
+           <tr>
+              <td class="accent-text">Please take a look at this task</td>
+              <td>03/08/2018</td>
+              <td>123 Main Street Anaheim, CA</td>
+           </tr>
+           <tr>
+              <td class="accent-text">Please take a look at this task</td>
+              <td>03/08/2018</td>
+              <td>123 Main Street Anaheim, CA</td>
+           </tr>
+        </table>
+     </div>
+     <h1>My Advertising Territory</h1>
+     <div class="advertising-territory-flex">
+        <div class="territory-map">Map Here</div>
+        <div class="territory-notifications-flex">
+           You Have:
+           <div class="territory-notification">
+              <div class="territory-notification-flex">
+                 <div class="notification-value positive">6</div>
+                 <div class="notification">
+                    <div class="notification-title positive">MarketPlace Adds</div>
+                    223 Views (Past 30 Days)
+                 </div>
+              </div>
+              <div class="notification-button-flex">
+                 <div class="button-primary">Buy More</div>
+                 <div class="button-secondary">View My Add</div>
+              </div>
+           </div>
+           <div class="territory-notification">
+              <div class="territory-notification-flex">
+                 <div class="notification-value secondary">6</div>
+                 <div class="notification">
+                    <div class="notification-title secondary">MarketPlace Adds</div>
+                    223 Views (Past 30 Days)
+                 </div>
+              </div>
+              <div class="notification-button-flex">
+                 <div class="button-primary">Buy More</div>
+                 <div class="button-secondary">View My Add</div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <h1>My Advertising Market</h1>
+     <div class="sub-head-info">
+        <h3>Home Shoppers</h3>
+        <i>Reaching home buyers and home sellers on Equator.com. Data below is a summary from the last 30 days.</i>
+     </div>
+     <div class="ad-markets-flex">
+        <div class="ad-market-wrap">
+           <div class="ad-market">
+              <div class="ad-market-city">Pittsburgh, PA</div>
+              <div class="listings-reach-flex">
+                 <ul class="listings">
+                    <li>
+                       <i class="fa fa-home" aria-hidden="true"></i>
+                    </li>
+                    <li>Listings
+                       <br>146
+                    </li>
+                    <li class="negative">-2.1%</li>
+                 </ul>
+                 <ul class="reach">
+                    <li>
+                       <i class="fa fa-female" aria-hidden="true"></i>
+                    </li>
+                    <li>Reach
+                       <br>3,432
+                    </li>
+                    <li class="positive">+3.4%</li>
+                 </ul>
+              </div>
+              <div class="button-primary">View My Ad</div>
+           </div>
+           <i class="ad-market-info">You currently advertise here.</i>
+        </div>
+        <div class="ad-market-wrap">
+           <div class="ad-market">
+              <div class="ad-market-city">Irvine, CA</div>
+              <div class="listings-reach-flex">
+                 <ul class="listings">
+                    <li>
+                       <i class="fa fa-home" aria-hidden="true"></i>
+                    </li>
+                    <li>Listings
+                       <br>146
+                    </li>
+                    <li class="negative">-2.1%</li>
+                 </ul>
+                 <ul class="reach">
+                    <li>
+                       <i class="fa fa-female" aria-hidden="true"></i>
+                    </li>
+                    <li>Reach
+                       <br>3,432
+                    </li>
+                    <li class="positive">+3.4%</li>
+                 </ul>
+              </div>
+              <div class="button-primary">View My Ad</div>
+           </div>
+           <i class="ad-market-info">You currently advertise here.</i>
+        </div>
+        <div class="ad-market-wrap">
+           <div class="ad-market">
+              <div class="ad-market-city">New Orleans, LA</div>
+              <div class="listings-reach-flex">
+                 <ul class="listings">
+                    <li>
+                       <i class="fa fa-home" aria-hidden="true"></i>
+                    </li>
+                    <li>Listings
+                       <br>146
+                    </li>
+                    <li class="negative">-2.1%</li>
+                 </ul>
+                 <ul class="reach">
+                    <li>
+                       <i class="fa fa-female" aria-hidden="true"></i>
+                    </li>
+                    <li>Reach
+                       <br>3,432
+                    </li>
+                    <li class="positive">+3.4%</li>
+                 </ul>
+              </div>
+              <div class="button-tertiary">More Details</div>
+           </div>
+           <i class="ad-market-info">Recommended</i>
+        </div>
+        <div class="ad-market-wrap">
+           <div class="ad-market">
+              <div class="ad-market-city">Pittsburgh, PA</div>
+              <div class="listings-reach-flex">
+                 <ul class="listings">
+                    <li>
+                       <i class="fa fa-home" aria-hidden="true"></i>
+                    </li>
+                    <li>Listings
+                       <br>146
+                    </li>
+                    <li class="negative">-2.1%</li>
+                 </ul>
+                 <ul class="reach">
+                    <li>
+                       <i class="fa fa-female" aria-hidden="true"></i>
+                    </li>
+                    <li>Reach
+                       <br>3,432
+                    </li>
+                    <li class="positive">+3.4%</li>
+                 </ul>
+              </div>
+              <div class="button-tertiary">More Details</div>
+           </div>
+           <i class="ad-market-info">Recommended</i>
+        </div>
+     </div>
+     <h1>REO Lenders and Services</h1>
+     <i class="sub-head-info">Exposure to Lenders and Servicers with REOs</i>
+     <div class="lenders-services-flex">
+        <div class="date-views">
+           <ul>
+              <li>
+                 <h3>April 2018</h3>
+              </li>
+              <li>
+                 <i class="fa fa-search" aria-hidden="true"></i>
+              </li>
+              <li>Views</li>
+              <li class="views-value">158</li>
+              <li class="positive">+21.6%</li>
+              <li class="button-primary">View My Rank</li>
+           </ul>
+        </div>
+        <div class="views-stats">
+           <i>REO Lender Views</i>
+           <div class="chart-outer">
+              <div class="chart-inner-flex">
+                 <div class="bar-group" style="height: 30%">
+                    40
+                    <div class="bar"></div>
+                    Jan
+                 </div>
+                 <div class="bar-group" style="height: 60%">
+                    90
+                    <div class="bar"></div>
+                    Feb
+                 </div>
+                 <div class="bar-group" style="height: 45%">
+                    70
+                    <div class="bar"></div>
+                    Mar
+                 </div>
+                 <div class="bar-group-highlight" style="height: 70%">
+                    140
+                    <div class="bar"></div>
+                    Apr
+                 </div>
+              </div>
+           </div>
+           <span class="views-highlight">How do I get Banks to find me?</span>
+        </div>
+     </div>
+     <h1>Tracking Forclosures</h1>
+     <div class="tracking-forclosures-flex">
+        <div class="map-img">Map image here</div>
+        <table class="tracking-info">
+           <tr>
+              <th colspan="2">Nationwide REO Properties in Equator February 2018</th>
+           </tr>
+           <tr>
+              <td>
+                 <div class="header">Incoming REOS</div>
+                 Month over month
+              </td>
+              <td class="value">
+                 <i class="fa fa-arrow-down negative" aria-hidden="true"></i>11%
+              </td>
+           </tr>
+           <tr>
+              <td>
+                 <div class="header">Sold REOS</div>
+                 Month over month
+              </td>
+              <td class="value">
+                 <i class="fa fa-arrow-up plus-fortyfive" aria-hidden="true"></i>11%
+              </td>
+           </tr>
+           <tr>
+              <td>
+                 <div class="header">Active Inventory</div>
+                 Current
+              </td>
+              <td class="value">51,346</td>
+           </tr>
+           <tr>
+              <td colspan="2">
+                 <div class="button-primary">View Activity in Orange County</div>
+              </td>
+           </tr>
+        </table>
+     </div>
+  </div>
+</body>
+</htmL>

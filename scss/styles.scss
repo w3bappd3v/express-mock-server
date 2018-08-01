@@ -1,0 +1,455 @@
+$primary-accent: #199ed8;
+$announcements-accent: #f8981d;
+$header-highlight: #2f2f2f;
+$primary: #6e7274;
+$positive-highlight: #25be59;
+$negative-highlight: #ff0000;
+$secondary-highlight: #20558b;
+$background-highlight: #d7d7d7;
+$tertiary-highlight: #000;
+
+$break-small: 380px;
+$break-large: 1024px;
+
+@mixin respond-to($media) {
+  @if $media==small-screens {
+    @media only screen and (max-width: $break-small) {
+      @content;
+    }
+  }
+  @else if $media==medium-screens {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) {
+      @content;
+    }
+  }
+  @else if $media==wide-screens {
+    @media only screen and (min-width: $break-large) {
+      @content;
+    }
+  }
+}
+
+@mixin make-circle($radius) {
+  border-radius: 50%;
+  min-width: $radius;
+  min-height: $radius;
+  width: $radius;
+  height: $radius;
+}
+
+.positive {
+  color: $positive-highlight;
+}
+
+.negative {
+  color: $negative-highlight;
+}
+
+.secondary {
+  color: $secondary-highlight;
+}
+
+.plus-fortyfive {
+  transform: rotate(45deg);
+}
+
+.agent-home {
+  font-family: 'Open Sans', sans-serif;
+  margin: 10px;
+  color: $primary;
+  min-width: 330px;
+  max-width: 1024px;
+  margin: 0 auto;
+  .strong {
+    font-weight: bold;
+  }
+  .fa-exclamation-circle {
+    color: #c54f4b;
+    font-size: 1.2em;
+  }
+  h2,
+  h3 {
+    margin: 0;
+  }
+  h1 {
+    font-size: 1.4em;
+    margin: .5em 0;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+  h3 {
+    font-size: 1.2em;
+  }
+  %button {
+    color: white;
+    border-radius: 4px;
+    display: inline-table;
+    white-space: nowrap;
+    padding: 4px 13px;
+    font-size: .75em;
+    cursor: pointer;
+  }
+  .button-primary {
+    @extend %button;
+    background: $primary-accent;
+  }
+  .button-secondary {
+    @extend %button;
+    background: #989898;
+  }
+  .button-tertiary {
+    @extend %button;
+    border: $primary-accent 2px solid;
+    color: $primary-accent;
+    padding: 2px 13px;
+  }
+  .agent-photo {
+    @include make-circle(140px);
+    @include respond-to(small-screens) {
+      @include make-circle(85px)
+    }
+    ;
+  }
+  .accent-text {
+    color: $primary-accent;
+  }
+  .announcements-flex {
+    height: 30px;
+    display: flex;
+    @include respond-to(small-screens) {
+      flex-wrap: wrap;
+    }
+    ;
+  }
+  .announcements-title {
+    height: 100%;
+    width: 140px;
+    min-width: 140px;
+    padding: 2px;
+    color: white;
+    background: $announcements-accent;
+    border-radius: 3px 0px 0px 3px;
+  }
+  .announcements-text,
+  .announcements-title-text {
+    margin: 3px 0 0 6px;
+  }
+  .announcements {
+    height: 100%;
+    width: 100%;
+    border: 2px solid $announcements-accent;
+    border-radius: 0px 3px 3px 0px;
+    @include respond-to(small-screens) {
+      order: 2;
+    }
+  }
+  .view-all {
+    color: $primary-accent;
+    width: 85px;
+    white-space: nowrap;
+    margin: 6px 0 0px 10px;
+    cursor: pointer;
+    @include respond-to(small-screens) {
+      order: 1;
+    }
+  }
+  .view-all:hover {
+    text-decoration: underline;
+  }
+  .intro-completion-flex {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 20px 0;
+    @include respond-to(small-screens) {
+      flex-wrap: wrap;
+      margin-top: 60px;
+    }
+  }
+  .introduction-flex {
+    display: flex;
+    width: 350px;
+    @include respond-to(small-screens) {
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 25px;
+      width: 100%;
+    }
+  }
+  ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  .agent-information {
+    margin: 0 20px;
+    white-space: nowrap;
+    h2 {
+      display: inline;
+    }
+  }
+  .agent-information li {
+    padding: 2px 0;
+  }
+  .edit-agent-name {
+    font-size: .75em;
+  }
+  .agent-rank-title {
+    color: $primary-accent;
+    font-weight: bold;
+  }
+  .view-profile {
+    @include respond-to(small-screens) {
+      text-align: center;
+    }
+    .button-primary {
+      @include respond-to(small-screens) {
+        margin-top: 20px;
+      }
+    }
+  }
+  .profile-completeness {
+    border: 2px solid #ebebeb;
+    background: #f6f6f6;
+    padding: 10px;
+    width: calc(100% - 350px);
+    font-size: .8em;
+    color: #000;
+    .button-primary {
+      padding: 2px 13px;
+    }
+    li {
+      padding: 1px 0;
+    }
+  }
+  .completeness-text {
+    font-size: 1.4em;
+  }
+  .completeness-title {
+    font-weight: bold;
+    color: $header-highlight;
+  }
+  .completion-progress {
+    height: 8px;
+    width: 87%;
+    display: inline-block;
+    background: $primary;
+  }
+  .completion-progress-bar {
+    background: $primary-accent;
+    height: 100%;
+  }
+  .listing-activity {
+    h3 {
+      display: inline;
+      margin-right: 6px;
+      font-size: 1.3em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      font-size: .8em;
+    }
+    th,
+    td {
+      padding: 5px 7px;
+      border-right: 1px solid #fff;
+    }
+    th {
+      text-align: left;
+      background: #ececec;
+    }
+    tr:nth-child(odd) {
+      background: #f5f5f5;
+    }
+  }
+  .listing-activity-title {
+    font-size: 1.5em;
+  }
+  .advertising-territory-flex {
+    display: flex
+  }
+  .territory-map {
+    margin-right: 20px;
+    height: 275px;
+    width: calc(100% - 240px);
+    background: #e6e6e6;
+  }
+  .territory-notifications-flex {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+  }
+  .territory-notification-flex {
+    display: flex;
+  }
+  .territory-notification {
+    margin-top: 15px;
+  }
+  .notification-value {
+    font-size: 4em;
+    margin: -14px 10px 0 0;
+  }
+  .notification-title {
+    font-weight: bold;
+    margin: 3px 0;
+  }
+  .notification-button-flex {
+    display: flex;
+    justify-content: space-around;
+    .button-primary,
+    .button-secondary {
+      padding: 7px 22px;
+    }
+  }
+  .ad-markets-flex {
+    display: flex;
+  }
+  .ad-market-wrap {
+    width: 25%;
+    text-align: center;
+    margin: 15px 10px 0 0;
+  }
+  .ad-market {
+    border: 2px solid #d1d1d1;
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+    padding-bottom: 20px;
+    .fa {
+      color: #989898;
+      font-size: 1.2em;
+    }
+    ul {
+      margin: 15px 0 10px 0;
+    }
+    li {
+      text-align: center;
+    }
+    li:nth-child(3n) {
+      margin: 25px 0;
+    }
+  }
+  .sub-head-info {
+    font-size: .8em;
+  }
+  .ad-market-city {
+    background: $background-highlight;
+    height: 40px;
+    padding-top: 20px;
+    vertical-align: middle;
+  }
+  .listings-reach-flex {
+    display: flex;
+    justify-content: space-around;
+  }
+  .lenders-services-flex {
+    display: flex;
+    height: 290px;
+    margin: 10px 0 20px 0;
+  }
+  .date-views {
+    background: #d7d7d7;
+    text-align: center;
+    height: 100%;
+    width: 190px;
+    font-size: 1.2em;
+    .views-value {
+      color: $tertiary-highlight;
+    }
+    ul {
+      padding: 30px;
+      font-weight: bold;
+    }
+    .fa-search {
+      font-size: 2.2em;
+      color: #0066ff;
+    }
+    .button-primary {
+      font-weight: normal;
+      margin-top: 15px;
+    }
+  }
+  .views-stats {
+    height: calc(100% - 24px);
+    width: calc(100% - 190px);
+    border: 2px solid #d7d7d7;
+    text-align: center;
+    background: #f2f2f2;
+    font-weight: bold;
+    padding-top: 20px;
+    .chart-outer {
+      background: $primary-accent;
+      height: 75%;
+      width: 85%;
+      margin-left: 40px;
+    }
+    .chart-inner-flex {
+      align-items: flex-end;
+      display: flex;
+      width: 96%;
+      height: 94%;
+      background: #f2f2f2;
+      float: right;
+    }
+    .chart-inner-flex .bar-group:first-child {
+      margin-left: 125px;
+    }
+    .bar-group {
+      width: 50px;
+      margin: 0 50px 50px 15px;
+      .bar {
+        height: 100%;
+        background: $primary-accent;
+      }
+    }
+    .bar-group-highlight {
+      width: 50px;
+      margin: 0 50px 50px 15px;
+      color: #000;
+      .bar {
+        height: calc(100% - 4px);
+        background: #ff7b23;
+        border: 2px solid #d7d7d7;
+      }
+    }
+    .views-highlight {
+      color: #0066ff;
+      font-size: .8em;
+    }
+  }
+  .tracking-forclosures-flex {
+    display: flex;
+    .plus-fortyfive {
+      color: #ff9900;
+    }
+    .map-img {
+      height: 100%;
+      width: calc(100% - 310px);
+    }
+    .tracking-info {
+      width: 310px;
+      td,
+      th {
+        text-align: left;
+      }
+      th {
+        font-weight: bold;
+        font-size: 1.3em;
+        color: #000;
+      }
+      .header {
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      .value {
+        font-size: 1.4em;
+      }
+      .button-primary {
+        margin-top: 20px;
+      }
+    }
+  }
+}

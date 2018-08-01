@@ -1,0 +1,25 @@
+{
+  "name": "robs-mock-backend",
+  "version": "1.0.0",
+  "description": "local api server",
+  "main": "server.js",
+  "scripts": {
+    "build-css": "concurrently \"node-sass --include-path scss scss/styles.scss public/styles.css\" \"node server.js\"",
+    "watch": "nodemon -e scss -x \"npm run build-css\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "json-server": "^0.13.0",
+    "morgan": "^1.9.0",
+    "node-sass": "^4.9.0",
+    "path": "^0.12.7",
+    "reload": "^2.2.2"
+  }
+}

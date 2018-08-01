@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "I am a post.",
+      "author": "Robert Anton Wilson"
+    },
+    {
+      "id": 23,
+      "title": "I am a post.",
+      "author": "Robert Anton Wilson"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 11235813
+    }
+  ],
+  "profile": {
+    "name": "Hieronymus"
+  }
+}
