@@ -42,13 +42,21 @@ gulp.task('new', function () {
   mkdirp(featDir, function (err) {
     if (err) console.error(err)
   });
-  fs.writeFile(featDir + argv.feature + '.html', html, null);
-  fs.writeFile(sassDir + argv.feature + '.scss', scss, null);
+  fs.writeFile(featDir + argv.feature + '.html', html, function (err) {
+    if (err) console.error(err)
+  });
+  fs.writeFile(sassDir + argv.feature + '.scss', scss, function (err) {
+    if (err) console.error(err)
+  });
 });
 
 gulp.task('sass', function () {
   gulp.src(SOURCE.scss)
     .pipe(sass())
+    .on('error', function (err) {
+      console.log(err.toString());
+      this.emit('end');
+    })
     .pipe(gulp.dest(DEST.css))
     .pipe(browserSync.stream())
     ;
