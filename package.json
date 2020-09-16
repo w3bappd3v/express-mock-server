@@ -24,7 +24,7 @@
     "json-server": "^0.13.0",
     "mkdirp": "^0.5.1",
     "morgan": "^1.9.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.13.1",
     "path": "^0.12.7",
     "reload": "^2.2.2"
   }
